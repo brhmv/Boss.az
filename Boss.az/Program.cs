@@ -383,6 +383,7 @@ while (true)
 
     if (ch2 == 1)
     {
+        Console.Clear();
         while (true)
         {
             Console.WriteLine("1)Sign up\n2)Sign in\n3)Exit\n");
@@ -489,6 +490,7 @@ while (true)
     {
         while (true)
         {
+            Console.Clear();
             Console.WriteLine("1)Sign up\n2)Sign in\n3)Exit\n");
             ch2 = Convert.ToInt32(Console.ReadLine());
 

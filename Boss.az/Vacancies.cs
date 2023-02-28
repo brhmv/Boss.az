@@ -11,6 +11,7 @@
 
         //public List<CV> cvs = new();
 
+        //[System.Text.Json.Serialization.JsonIgnore]
         public Employer FromWhichEmployer { get; set; }
 
         public string Title { get; set; }
@@ -27,9 +28,13 @@
 
         #endregion
 
+        public Vacancy() {
+            ObjectId = ID++;
+        }
+
         public Vacancy(string name, string title, double salary, sbyte minExperience, double maxAge, Worktype wt)
         {
-            FromWhichEmployer = null;
+            FromWhichEmployer = new();
             //FromWhichEmployer = emp;
             ObjectId = ID++;
             Name = name;
@@ -102,7 +107,8 @@
             }
         }
 
-        public override string ToString() => $"ID:{ObjectId} FromWhichEmployer:{FromWhichEmployer.Name} Job: {Name} Title: {Title} " +
+        //FromWhichEmployer:{FromWhichEmployer.Name}
+        public override string ToString() => $"ID:{ObjectId}  Job: {Name} Title: {Title} " +
             $"Salary: {Salary} Minimum Experience: {MinExperience} Maximum Age: {MaxAge} Work type: {workType}";
     }
 }

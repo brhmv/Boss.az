@@ -20,6 +20,10 @@
         public string City { get; set; }
         #endregion
 
+        public Person() {
+            ObjectId = ID++;
+        }
+
         public Person(string name, string surname, int age, string phone, string city)
         {
             //Password= password;

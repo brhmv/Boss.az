@@ -10,6 +10,8 @@
         public Level languageLevel { get; set; }
         #endregion
 
+        public Language() { }
+
         public Language(string name, Level languageLevel)
         {
             Name = name;
@@ -94,8 +96,11 @@
 
         public string? Gitlink { get; set; }
 
+        //[System.Text.Json.Serialization.JsonIgnore]
         public List<Language>? Languages { get; }
         #endregion
+
+        public CV() { }
 
         public CV(string? profession, string? universityName, double universityScore, string[]? skills, string[]? companies,
 

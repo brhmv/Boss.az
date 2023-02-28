@@ -2,7 +2,10 @@
 {
     internal class Worker : Person
     {
+        //[System.Text.Json.Serialization.JsonIgnore]
         public CV? CV { get; set; }
+
+        public Worker() { }
 
         public Worker(string name, string surname, string city, string phone, sbyte age, CV? cv = null)
             : base(name, surname, age, phone, city)
@@ -34,11 +37,11 @@
                     phone = Console.ReadLine();
 
                     Console.WriteLine("Insert password: ");
-                    string? password= Console.ReadLine();
+                    string? password = Console.ReadLine();
 
                     Worker w = new(name, surname, city, phone, age);
                     w.Password = password;
-                    
+
                     return w;
                     //return new(name, surname, city, phone, age);
                 }
@@ -54,7 +57,9 @@
         public void Print()
         {
             Console.WriteLine(base.ToString);
-            CV.Print();
+
+            if (CV != null)
+                CV.Print();
         }
     }
 }

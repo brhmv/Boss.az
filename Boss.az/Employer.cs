@@ -3,9 +3,14 @@
     internal class Employer : Person
     {
         #region Properties
+        
+        //[System.Text.Json.Serialization.JsonIgnore]
         public List<Notification> Notifications { get; set; }
-
+        
+        //[System.Text.Json.Serialization.JsonIgnore]
         public List<Vacancy> Vacancies { get; set; }
+
+        public Employer() { }
 
         public Employer(string name, string surname, int age, string phone, string city) : base(name, surname, age, phone, city)
         {
@@ -15,7 +20,6 @@
         #endregion
 
         #region Accept/ Reject Notification
-        //CV statsusu deyis 
 
         public void AcceptNotification(int id)
         {
@@ -46,6 +50,7 @@
         }
         #endregion
 
+        #region Functions
         public static Employer CreateEmployer()
         {
             while (true)
@@ -91,26 +96,28 @@
 
         public void AddVacancy(Vacancy vacancy) { Vacancies.Add(vacancy); }
 
-        public void DeleteVacancy(int id)
+        public void DeleteVacancy(int id, bool exist)
         {
             foreach (var item in Vacancies)
             {
-                if (item.ObjectId==id)
+                if (item.ObjectId == id)
                 {
                     Vacancies.Remove(item);
-                }   
+                    break;
+                }
             }
+            exist = false;
         }
 
         public void DeleteNotification(int id)
         {
             foreach (var item in Notifications)
             {
-                if (item.ObjectId==id)
+                if (item.ObjectId == id)
                 {
                     Notifications.Remove(item);
                     Console.WriteLine("Notification deleted Succesfully!");
-                }                
+                }
             }
         }
 
@@ -136,5 +143,7 @@
 
             foreach (var v in Vacancies) { Console.WriteLine(v); }
         }
+
+        #endregion
     }
 }

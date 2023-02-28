@@ -12,8 +12,10 @@
 
         public string Content { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public Worker Worker { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public Vacancy Vacancy { get; set; }
 
         public DateTime Datetime;
@@ -22,6 +24,10 @@
 
         public bool AcceptedOrNot { get; set; }
         #endregion
+
+        public Notification() { 
+        ObjectId= ID++;
+        }
 
         public Notification( string content, Worker worker, Vacancy vacancy)
         {
